@@ -1,0 +1,12 @@
+<form action="/books" accept-charset="UTF-8" method="post">
+  <input type="hidden" name="authenticity_token" value="...">
+
+  <div>
+    <label for="book_title">Title</label><br>
+    <input type="text" name="book[title]" id="book_title">
+  </div>
+
+  <div>
+    <input type="submit" name="commit" value="Add Book" data-disable-with="Add Book">
+  </div>
+</form>
