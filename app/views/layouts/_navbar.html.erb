@@ -1,9 +1,10 @@
-<nav class="navbar is-transparent container is-max-desktop" data-controller="navbar">
+<nav class="navbar is-transparent container is-max-desktop mb-5" data-controller="navbar">
   <div class="navbar-brand">
     <a class="navbar-item" href="/">
-      <img src="https://bulma.io/images/bulma-logo.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28">
+      <img src="<%= asset_path('alexandria.svg') %>" class="p-1" style="max-height: 5rem;" alt="Logo de Alexandria, formado por três silhouetas da estátua O Pensador, uma maior que a outra, cada uma em um tom mais claro do preto para o cinza">
+      <h1 class="p-2" style="font-family: 'TacOne Regular'; font-size: 2rem; letter-spacing: 2px;">ALEXANDRIA</h1>
     </a>
-    <div class="navbar-burger" data-action="click->navbar#toggle">
+    <div class="navbar-burger mt-5" data-action="click->navbar#toggle">
       <span></span>
       <span></span>
       <span></span>
@@ -30,16 +31,10 @@
       <div class="navbar-item">
         <div class="field is-grouped">
           <p class="control">
-            <a class="bd-tw-button button">
-              <span>
-                Entrar
-              </span>
-            </a>
+            <%= link_to 'Entrar', new_user_session_path, class: "bd-tw-button button" %>
           </p>
           <p class="control">
-            <a class="button is-primary">
-              <span>Criar conta</span>
-            </a>
+            <%= link_to 'Criar conta', new_user_registration_path, class: "button is-primary" %>
           </p>
         </div>
       </div>

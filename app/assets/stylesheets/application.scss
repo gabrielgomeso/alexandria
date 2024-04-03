@@ -13,4 +13,12 @@
  *= require_tree .
  *= require_self
  */
- @import "bulma";
+@import "bulma";
+
+@font-face {
+  font-family: 'TacOne Regular';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("TacOne-Regular.ttf") format('truetype');
+}

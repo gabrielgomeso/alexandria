@@ -1,12 +1,73 @@
 <form action="/books" accept-charset="UTF-8" method="post">
   <input type="hidden" name="authenticity_token" value="...">
 
-  <div>
-    <label for="book_title">Title</label><br>
-    <input type="text" name="book[title]" id="book_title">
+  <div class="field">
+    <label class="label" for="book_title">Título</label>
+    <div class="control">
+      <input class="input" type="text" placeholder="Memórias Póstumas" name="book[title]" id="book_title">
+    </div>
   </div>
 
-  <div>
-    <input type="submit" name="commit" value="Add Book" data-disable-with="Add Book">
+  <div class="field">
+    <label class="label" for="book_author">Autor</label>
+    <div class="control">
+      <input class="input" type="text" placeholder="Macheido de Assuais" name="book[author]" id="book_author">
+    </div>
   </div>
+
+  <div class="field">
+    <label class="label" for="book_category">Categoria</label>
+    <div class="control">
+      <input class="input" type="text" placeholder="Drama" name="book[category]" id="book_category">
+    </div>
+  </div>
+
+  <div class="field">
+    <label class="label" for="book_isbn">ISBN</label>
+    <div class="control">
+      <input class="input" type="text" placeholder="9780333791035" name="book[isbn]" id="book_isbn">
+    </div>
+  </div>
+
+  <div class="field">
+    <label class="label" for="book_publisher">Editora</label>
+    <div class="control">
+      <input class="input" type="text" placeholder="Editora Arqueiro" name="book[publisher]" id="book_publisher">
+    </div>
+  </div>
+
+  <div class="field">
+    <label class="label" for="book_publication_date">Data de publicação</label>
+    <div class="control">
+      <input class="input" type="date" name="book[publication_date]" id="book_publication_date">
+    </div>
+  </div>
+
+  <div class="field">
+    <label class="label" for="book_language">Idioma</label>
+    <div class="control">
+      <input class="input" type="text" placeholder="Português" name="book[language]" id="book_language">
+    </div>
+  </div>
+
+  <label class="label">Capa</label>
+  <div class="field file has-name" data-controller="file-input">
+    <label class="file-label control ">
+      <input class="file-input" type="file" name="book[cover]" id="book_cover" data-file-input-target="input" />
+      <span class="file-cta">
+        <span class="file-label">Escolha uma imagem…</span>
+      </span>
+      <span class="file-name" data-file-input-target="fileName">No file uploaded</span>
+    </label>
+  </div>
+
+
+  <div class="field">
+    <label class="label" for="book_description">Descrição</label>
+    <div class="control">
+      <textarea class="textarea" placeholder="Guarda-roupas mágicos, anéis que levam para outros mundos..." name="book[description]" id="book_description"></textarea>
+    </div>
+  </div>
+
+  <input  class="button is-primary" type="submit" name="commit" value="Adicionar Livro" data-disable-with="Adicionar Livro">
 </form>
