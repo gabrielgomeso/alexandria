@@ -1,5 +1,6 @@
 class BooksController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :authorize_admin!, only: [:new, :create]
 
   def index
     @books = Book.all
@@ -40,5 +41,12 @@ class BooksController < ApplicationController
       :current_holder_id,
       :cover
     )
+  end
+
+  def authorize_admin!
+    unless current_user.admin?
+      flash[:alert] = 'You do not have permission to perform this action.'
+      redirect_to root_path
     end
+  end
 end
