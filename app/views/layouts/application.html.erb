@@ -12,11 +12,18 @@
 
   <body>
     <%= render "layouts/navbar" %>
-
-    <% if notice || alert  %>
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-    <% end %>
+  
+    <div class="container is-widescreen">
+      <% if notice %>
+        <div class="notification is-primary">
+          <%= notice %>
+        </div>
+      <% elsif alert %>
+        <div class="notification is-danger">
+          <%= alert %>
+        </div>
+      <% end %>
+    </div>
 
     <main class="container is-widescreen p-3">
       <%= yield %>
