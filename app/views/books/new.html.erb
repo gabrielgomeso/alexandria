@@ -1,73 +1,85 @@
-<form action="/books" accept-charset="UTF-8" method="post">
-  <input type="hidden" name="authenticity_token" value="...">
+<%= form_for @book, url: books_path, html: { multipart: true } do |f| %>
+  <%= f.hidden_field :authenticity_token, value: form_authenticity_token %>
+
+  <% if @book.errors.any? %>
+    <div id="error_explanation" class="notification is-danger">
+      <h4 class="title is-4">O formulário contém <%= pluralize(@book.errors.count, "erro") %>:</h4>
+      <ul>
+        <% @book.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 
   <div class="field">
-    <label class="label" for="book_title">Título</label>
+    <%= f.label :title, 'Título', class: "label" %>
     <div class="control">
-      <input class="input" type="text" placeholder="Memórias Póstumas" name="book[title]" id="book_title">
+      <%= f.text_field :title, class: "input", placeholder: "Memórias Póstumas" %>
     </div>
   </div>
 
   <div class="field">
-    <label class="label" for="book_author">Autor</label>
+    <%= f.label :author, 'Autor', class: "label" %>
     <div class="control">
-      <input class="input" type="text" placeholder="Macheido de Assuais" name="book[author]" id="book_author">
+      <%= f.text_field :author, class: "input", placeholder: "Machado de Assis" %>
     </div>
   </div>
 
   <div class="field">
-    <label class="label" for="book_category">Categoria</label>
+    <%= f.label :category, 'Categoria', class: "label" %>
     <div class="control">
-      <input class="input" type="text" placeholder="Drama" name="book[category]" id="book_category">
+      <%= f.text_field :category, class: "input", placeholder: "Drama" %>
     </div>
   </div>
 
   <div class="field">
-    <label class="label" for="book_isbn">ISBN</label>
+    <%= f.label :isbn, 'ISBN', class: "label" %>
     <div class="control">
-      <input class="input" type="text" placeholder="9780333791035" name="book[isbn]" id="book_isbn">
+      <%= f.text_field :isbn, class: "input", placeholder: "9780333791035" %>
     </div>
   </div>
 
   <div class="field">
-    <label class="label" for="book_publisher">Editora</label>
+    <%= f.label :publisher, 'Editora', class: "label" %>
     <div class="control">
-      <input class="input" type="text" placeholder="Editora Arqueiro" name="book[publisher]" id="book_publisher">
+      <%= f.text_field :publisher, class: "input", placeholder: "Editora Arqueiro" %>
     </div>
   </div>
 
   <div class="field">
-    <label class="label" for="book_publication_date">Data de publicação</label>
+    <%= f.label :publication_date, 'Data de publicação', class: "label" %>
     <div class="control">
-      <input class="input" type="date" name="book[publication_date]" id="book_publication_date">
+      <%= f.date_field :publication_date, class: "input" %>
     </div>
   </div>
 
   <div class="field">
-    <label class="label" for="book_language">Idioma</label>
+    <%= f.label :language, 'Lingua', class: "label" %>
     <div class="control">
-      <input class="input" type="text" placeholder="Português" name="book[language]" id="book_language">
+      <%= f.text_field :language, class: "input", placeholder: "Português" %>
     </div>
   </div>
 
-  <label class="label">Capa</label>
-  <div class="field file has-name" data-controller="file-input">
-    <label class="file-label control ">
-      <input class="file-input" type="file" name="book[cover]" id="book_cover" data-file-input-target="input" />
-      <span class="file-cta">
-        <span class="file-label">Escolha uma imagem…</span>
-      </span>
-      <span class="file-name" data-file-input-target="fileName">No file uploaded</span>
-    </label>
+  <div class="mb-2">
+    <%= f.label :cover, 'Capa', class: "label" %>
+    <div class="field file has-name" data-controller="file-input">
+      <label class="file-label control">
+        <%= f.file_field :cover, class: "file-input", id: "book_cover", "data-file-input-target" => "input" %>
+        <span class="file-cta">
+          <span class="file-label">Escolha uma imagem…</span>
+        </span>
+        <span class="file-name" data-file-input-target="fileName">No file uploaded</span>
+      </label>
+    </div>
   </div>
-
 
   <div class="field">
-    <label class="label" for="book_description">Descrição</label>
+    <%= f.label :description, 'Descrição', class: "label" %>
     <div class="control">
-      <textarea class="textarea" placeholder="Guarda-roupas mágicos, anéis que levam para outros mundos..." name="book[description]" id="book_description"></textarea>
+      <%= f.text_area :description, class: "textarea", placeholder: "Guarda-roupas mágicos, anéis que levam para outros mundos..." %>
     </div>
   </div>
 
-  <input  class="button is-primary" type="submit" name="commit" value="Adicionar Livro" data-disable-with="Adicionar Livro">
-</form>
+  <%= f.submit "Adicionar Livro", class: "button is-primary", "data-disable-with" => "Adicionar Livro" %>
+<% end %>
