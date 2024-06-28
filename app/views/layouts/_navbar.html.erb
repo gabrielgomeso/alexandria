@@ -1,49 +1,50 @@
 <nav class="navbar is-transparent  mb-5 has-background-grey-lighter" data-controller="navbar">
-  <div class="container is-max-desktop">
-    <div class="navbar-brand">
-      <a class="navbar-item" href="/">
-        <img src="<%= asset_path('alexandria.svg') %>" class="p-1" style="max-height: 5rem;" alt="Logo de Alexandria, formado por três silhouetas da estátua O Pensador, uma maior que a outra, cada uma em um tom mais claro do preto para o cinza">
-        <h1 class="p-2" style="font-family: 'TacOne Regular'; font-size: 2rem; letter-spacing: 2px;">ALEXANDRIA</h1>
-      </a>
-      <div class="navbar-burger mt-5" data-action="click->navbar#toggle">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
+  <div class="navbar-brand">
+    <a class="navbar-item" href="/">
+      <img src="<%= asset_path('alexandria.svg') %>" class="p-1" style="max-height: 5rem;" alt="Logo de Alexandria, formado por três silhouetas da estátua O Pensador, uma maior que a outra, cada uma em um tom mais claro do preto para o cinza">
+      <h1 class="p-2" style="font-family: 'TacOne Regular'; font-size: 2rem; letter-spacing: 2px;">ALEXANDRIA</h1>
+    </a>
+    <div class="navbar-burger mt-5" data-action="click->navbar#toggle">
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
+  </div>
 
-    <div class="navbar-menu" data-navbar-target="menu">
-      <div class="navbar-start">
-        <a class="navbar-item" href="/">
-          Início
-        </a>
-        <a class="navbar-item" href="/books">
-          Catálogo
-        </a>
-        <a class="navbar-item" href="/">
-          Assinatura
-        </a>
+  <div class="navbar-menu" data-navbar-target="menu">
+    <div class="navbar-start">
+      <a class="navbar-item" href="/">
+        Início
+      </a>
+      <a class="navbar-item" href="/books">
+        Catálogo
+      </a>
+      <a class="navbar-item" href="/">
+        Assinatura
+      </a>
+      
+      <% if user_signed_in? %>
         <a class="navbar-item" href="/books/new">
           Adicionar livro
         </a>
-      </div>
+      <% end %>
+    </div>
 
-      <div class="navbar-end">
-        <div class="navbar-item">
-          <div class="field is-grouped">
-            <% if user_signed_in? %>
-              <p class="control">
-                <%= link_to 'Sair', destroy_user_session_path, class: "button is-danger" %>
-              </p>
-            <% else %>
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="field is-grouped">
+          <% if user_signed_in? %>
             <p class="control">
-              <%= link_to 'Entrar', new_user_session_path, class: "bd-tw-button button" %>
+              <%= link_to 'Sair', destroy_user_session_path, class: "button is-danger" %>
             </p>
-            <p class="control">
-              <%= link_to 'Criar conta', new_user_registration_path, class: "button is-primary" %>
-            </p>
-            <% end %>
-          </div>
+          <% else %>
+          <p class="control">
+            <%= link_to 'Entrar', new_user_session_path, class: "bd-tw-button button" %>
+          </p>
+          <p class="control">
+            <%= link_to 'Criar conta', new_user_registration_path, class: "button is-primary" %>
+          </p>
+          <% end %>
         </div>
       </div>
     </div>
